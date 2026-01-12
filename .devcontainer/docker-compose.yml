@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      - /workspace/bin
+      - /workspace/obj
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Host=az-db100;Port=5432;Database=postgres;Username=abc;Password=abcabc"
+    ports:
+      - "38080:8080"
+    depends_on:
+      - az-db100
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+  az-db100:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: abc
+      POSTGRES_PASSWORD: abcabc
+    ports:
+      - "35432:5432"
+    volumes:
+      - ../sql:/docker-entrypoint-initdb.d
