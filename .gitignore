@@ -1,0 +1,50 @@
+# Build results
+*bin/
+*obj/
+out/
+
+# Test results and coverage
+TestResults/
+coveragereport/
+*.trx
+*.coverage
+*.coveragexml
+
+# Visual Studio / VS Code
+*vs/
+*vscode/
+*.user
+*.suo
+
+# .NET
+*.dll
+*.pdb
+*.cache
+
+# Docker
+.dockerignore
+
+# Logs
+*.log
+
+# Database
+*.db
+*.sqlite
+
+# Environment files
+.env
+.env.local
+
+# Node modules (if any)
+node_modules/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Certificates
+*.crt
+*.pem
+*.key
+*.p12
+*.pfx
