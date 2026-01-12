@@ -1,10 +1,16 @@
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using az_api.Models;
+using az_api.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AzDbContext>(options => options.UseNpgsql(connectionString));
+
+// Dapper用PostgreSQL接続をDI登録
+builder.Services.AddScoped(_ => new NpgsqlConnection(connectionString));
+builder.Services.AddScoped<SyainDataAccess>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
