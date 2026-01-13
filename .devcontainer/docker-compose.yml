@@ -9,7 +9,7 @@ services:
       - /workspace/obj
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__DefaultConnection: "Host=az-db100;Port=5432;Database=postgres_az;Username=az;Password=azaz"
+      ConnectionStrings__DefaultConnection: "Host=az-db100;Port=5432;Database=postgres;Username=az;Password=azaz"
     ports:
       - "38080:8080"
     depends_on:
@@ -17,9 +17,9 @@ services:
     command: /bin/sh -c "while sleep 1000; do :; done"
 
   az-db100:
-    image: postgres:18
+    image: postgres:17
     environment:
-      POSTGRES_DB: postgres_az
+      POSTGRES_DB: postgres
       POSTGRES_USER: az
       POSTGRES_PASSWORD: azaz
     ports:
