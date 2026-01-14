@@ -20,6 +20,5 @@
     "features": {
         "ghcr.io/devcontainers/features/git:1": {}
     },
-    "postCreateCommand": "dotnet restore",
-    "remoteUser": "vscode"
+    "postCreateCommand": "dotnet restore"
 }
